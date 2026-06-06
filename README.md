@@ -125,12 +125,6 @@ This project teaches:
 
 ---
 
-## License
-
-MIT License - Free to use, modify, and distribute
-
----
-
 **Happy Learning! 🎉**
 
 For detailed building instructions, see [BUILD-GUIDE.txt](BUILD-GUIDE.txt)
