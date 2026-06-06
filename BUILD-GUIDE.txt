@@ -1,0 +1,236 @@
+3-USER BUZZER SYSTEM WITH SCORING
+Step-by-Step Build Guide for Logisim Evolution 4.1.0
+
+================================================================================
+PART 1: OVERVIEW & COMPONENTS NEEDED
+================================================================================
+
+PROJECT GOAL:
+Create a system where 3 users press buttons. Whoever presses first wins and 
+their LED lights up. Other users are locked out. A counter tracks wins.
+
+COMPONENTS CHECKLIST:
+================================================================================
+INPUT COMPONENTS (I/O Library):
+  □ Button 1 (Label: "Buzzer1")
+  □ Button 2 (Label: "Buzzer2")
+  □ Button 3 (Label: "Buzzer3")
+  □ Button 4 (Label: "Reset")
+
+OUTPUT COMPONENTS (I/O Library):
+  □ LED 1 (Label: "Winner1", Color: Green)
+  □ LED 2 (Label: "Winner2", Color: Green)
+  □ LED 3 (Label: "Winner3", Color: Green)
+
+LOGIC GATES (Gates Library):
+  □ AND Gate 1 (2 inputs)
+  □ AND Gate 2 (2 inputs)
+  □ AND Gate 3 (2 inputs)
+  □ OR Gate 1 (Change to 3 inputs)
+  □ NOT Gate 1
+
+MEMORY COMPONENTS (Memory Library):
+  □ D Flip-Flop 1 (Label: "FF1")
+  □ D Flip-Flop 2 (Label: "FF2")
+  □ D Flip-Flop 3 (Label: "FF3")
+  □ Counter 1 (Label: "Count1", Width: 8-bit)
+  □ Counter 2 (Label: "Count2", Width: 8-bit)
+  □ Counter 3 (Label: "Count3", Width: 8-bit)
+
+CONSTANT VALUE (Wiring Library):
+  □ Constant (Set value to: 1)
+
+TOTAL COMPONENTS: 22 items
+
+================================================================================
+PART 2: STEP-BY-STEP PLACEMENT
+================================================================================
+
+STEP 1: OPEN LOGISIM EVOLUTION
+────────────────────────────────────────────────────────────────────────────
+1. Open Logisim Evolution 4.1.0
+2. Create a new project: File → New → Empty Project
+3. You should see a blank canvas (white area)
+
+STEP 2: PLACE THE INPUT BUTTONS
+────────────────────────────────────────────────────────────────────────────
+1. On the LEFT PANEL, click "I/O" to expand
+2. Select "Button" tool
+3. Click on canvas 4 times to place 4 buttons
+4. Arrange them vertically on the LEFT SIDE of canvas
+
+Position:
+  Buzzer1 Button ......... TOP LEFT (around X:50, Y:100)
+  Buzzer2 Button ......... (around X:50, Y:150)
+  Buzzer3 Button ......... (around X:50, Y:200)
+  Reset Button ........... (around X:50, Y:280)
+
+To RENAME each button:
+  1. Right-click on the button
+  2. Click "Properties"
+  3. Change "Label" field
+  4. Click OK
+
+STEP 3: PLACE THE LOGIC GATES
+────────────────────────────────────────────────────────────────────────────
+On the LEFT PANEL, click "Gates" to expand
+
+Place AND GATES (2-input):
+  1. Click "AND Gate" → click canvas 3 times
+  2. Position them VERTICALLY in the MIDDLE-LEFT area
+  
+     AND Gate 1 ........... around X:150, Y:120
+     AND Gate 2 ........... around X:150, Y:170
+     AND Gate 3 ........... around X:150, Y:220
+
+Place OR GATE (3-input):
+  1. Click "OR Gate" → click canvas 1 time
+  2. Position it at: X:250, Y:170
+  3. Right-click → Properties → Change "Number of inputs" to 3
+  4. Click OK
+
+Place NOT GATE:
+  1. Click "NOT Gate" → click canvas 1 time
+  2. Position it at: X:280, Y:170
+  3. Label it "NOT_LOCK" (Right-click → Properties → Label)
+
+STEP 4: PLACE THE FLIP-FLOPS
+────────────────────────────────────────────────────────────────────────────
+On the LEFT PANEL, click "Memory" to expand
+
+Place D FLIP-FLOPS:
+  1. Click "D Flip-Flop" → click canvas 3 times
+  2. Arrange them VERTICALLY in the MIDDLE area
+  
+     FF1 (D Flip-Flop 1) ... around X:200, Y:120
+     FF2 (D Flip-Flop 2) ... around X:200, Y:170
+     FF3 (D Flip-Flop 3) ... around X:200, Y:220
+
+To RENAME flip-flops:
+  1. Right-click on each one
+  2. Properties → Label: FF1, FF2, FF3
+  3. Click OK
+
+STEP 5: PLACE THE OUTPUT LEDs
+────────────────────────────────────────────────────────────────────────────
+On the LEFT PANEL, click "I/O" to expand
+
+Place LEDs:
+  1. Click "LED" → click canvas 3 times
+  2. Position them on the RIGHT SIDE
+  
+     Winner1 LED .......... around X:400, Y:120
+     Winner2 LED .......... around X:400, Y:170
+     Winner3 LED .......... around X:400, Y:220
+
+To customize LEDs (color):
+  1. Right-click on each LED
+  2. Properties → "oncolor" → Choose green (#00FF00)
+  3. Label: Winner1, Winner2, Winner3
+  4. Click OK
+
+STEP 6: PLACE THE COUNTERS
+────────────────────────────────────────────────────────────────────────────
+On the LEFT PANEL, click "Memory" to expand
+
+Place COUNTERS:
+  1. Click "Counter" → click canvas 3 times
+  2. Position them BELOW the flip-flops
+  
+     Count1 Counter ....... around X:400, Y:320
+     Count2 Counter ....... around X:400, Y:370
+     Count3 Counter ....... around X:400, Y:420
+
+To configure counters:
+  1. Right-click on each counter
+  2. Properties:
+     - Width: 8 (for 0-255 count)
+     - Label: Count1, Count2, Count3
+  3. Click OK
+
+STEP 7: PLACE THE CONSTANT VALUE
+────────────────────────────────────────────────────────────────────────────
+On the LEFT PANEL, click "Wiring" to expand
+
+Place CONSTANT:
+  1. Click "Constant" → click canvas 1 time
+  2. Position it at: X:100, Y:60
+  3. Right-click → Properties → Value: 0x1 (means 1)
+  4. Click OK
+
+NOW YOU HAVE ALL COMPONENTS PLACED!
+
+================================================================================
+PART 3: WIRING - MAKING CONNECTIONS
+================================================================================
+
+IMPORTANT WIRING RULES:
+  • Click on an OUTPUT point of one component
+  • Drag to an INPUT point of another component
+  • Release to create a connection
+  • Green lines = connections are good
+  • Red lines = error (usually wrong orientation)
+
+Refer to README.md and CIRCUIT-LOGIC.md for detailed wiring instructions.
+
+================================================================================
+PART 4: SAVE YOUR CIRCUIT
+================================================================================
+
+1. Click File → Save As
+2. Enter filename: "3_User_Buzzer_System.circ"
+3. Choose location (Desktop recommended)
+4. Click Save
+
+================================================================================
+PART 5: TEST YOUR CIRCUIT
+================================================================================
+
+STARTING SIMULATION:
+1. Click Simulate → Start (or press Ctrl+K)
+2. You should see a green play button indicator
+
+TESTING PROCEDURE:
+────────────────────────────────────────────────────────────────────────────
+TEST 1: First Press Wins
+  1. Click "Buzzer1" button multiple times
+  2. Observe: "Winner1" LED lights up GREEN ✓
+  3. While holding Buzzer1, click Buzzer2 and Buzzer3
+  4. Observe: Winner2 and Winner3 LEDs stay OFF ✓
+  5. Observe: Counter 1 shows "1" ✓
+
+TEST 2: Reset Works
+  1. Click "Reset" button
+  2. Observe: Winner1 LED turns OFF ✓
+  3. Observe: All LEDs are OFF ✓
+
+TEST 3: Second Round - Different Winner
+  1. Click "Buzzer3" button
+  2. Observe: "Winner3" LED lights up GREEN ✓
+  3. Observe: Counter 3 shows "1" ✓
+  4. Observe: Counter 1 still shows "1" ✓ (score persists)
+
+TEST 4: Score Persistence
+  1. Click Reset
+  2. Click Buzzer2
+  3. Observe: Winner2 LED lights up ✓
+  4. Observe: Counter 2 shows "1" ✓
+  5. Observe: Counter 1 still shows "1" (not reset) ✓
+
+TEST 5: Multiple Wins
+  1. Click Reset
+  2. Click Buzzer1 multiple times
+  3. Observe: Winner1 LED stays on
+  4. Observe: Counter 1 shows "2" ✓
+
+EXPECTED BEHAVIOR SUMMARY:
+✓ Only first button press is recognized
+✓ Other buttons are blocked (locked out)
+✓ LED indicates winner
+✓ Counter tracks wins
+✓ Reset clears lock and LEDs
+✓ Scores persist across resets
+
+================================================================================
+For more details, see README.md and CIRCUIT-LOGIC.md
+================================================================================
