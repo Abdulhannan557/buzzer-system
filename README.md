@@ -121,7 +121,7 @@ This project teaches:
 | **Winner Selection** | First-press priority |
 | **Scoring Range** | 0-255 (8-bit counter) |
 | **Component Count** | 22 |
-| **Estimated Build Time** | 30-45 minutes |
+| **Estimated Build Time** | 30 minutes |
 
 ---
 
